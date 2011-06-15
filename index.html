@@ -8,6 +8,7 @@
     <link href="css/prettify.css" media="all" type="text/css" rel="stylesheet" />
     <link href="css/sunburst.css" media="all" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="js/prettify.js"></script>
+    <script src="js/beautify.js"></script>
     <script src="js/jquery-1.6.1.min.js"></script>
     <script src="js/handlebars.1.0.0.beta.3.js"></script>
     <script src="js/underscore-min.js"></script>
@@ -122,16 +123,9 @@
     <script id="hurl-template" type="text/x-handlebars-template">
       <nav>
 	<ul>
-	  <li><a href="#">Request</a></li>
 	  <li><a href="#">Response</a></li>
 	</ul>
       </nav>
-      <section id="hurl-request">
-	<pre>
-	  {{#request}}
-	  {{/request}}
-	</pre>
-      </section>
       <section id="hurl-response">
 	  {{#response}}
 	  <pre class="prettyprint">{{headers}}</pre>
