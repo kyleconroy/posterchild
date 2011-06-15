@@ -65,8 +65,7 @@
 		<span class="link-icon">+</span> set post body</a>
 
 	      <p id="param-fields" style="display:none;">
-		<a href="#" class="param-delete">
-		  <img class="delete" src="/img/delete.png" title="remove"/></a>
+		<a href="#" class="param-delete"></a>
 		<input type="text" name="param-keys[]" class="form-alpha"/>
 		<input type="text" name="param-vals[]" class="form-beta" />
               </p>
@@ -99,7 +98,7 @@
 	  </p>
 
 	  <p id="header-fields" style="display:none;">
-	    <a href="#" class="header-delete"><img class="delete" src="/img/delete.png" title="remove"/></a>
+	    <a href="#" class="header-delete"></a>
 	    <input type="text" name="header-keys[]" class="form-alpha"/>
 	    <input type="text" name="header-vals[]" class="form-beta"/>
 	  </p>
@@ -110,9 +109,31 @@
 
 	</form>
 
+	<div id="current-hurl">
+	</div>
+
       </div>
 
     </div>
+
+    <script id="hurl-template" type="text/x-handlebars-template">
+      <nav>
+	<ul>
+	  <li><a href="#">Request</a></li>
+	  <li><a href="#">Response</a></li>
+	</ul>
+      </nav>
+      <section id="hurl-request">
+	<pre>
+	  {{request}}
+	</pre>
+      </section>
+      <section id="hurl-response">
+	<pre>
+	  {{response}}
+	</pre>
+      </section>
+    </script>
 
   </body>
 

@@ -2,6 +2,43 @@
 // Load the application once the DOM is ready, using `jQuery.ready`:
 $(function(){
 
+  var Hurl = Backbone.Model.extend({
+
+    send: function() {
+      var model = this;
+
+      $.ajax({
+	url: model.get("url"),
+	type: model.get("type"),
+	success: function(data, textStatus, jqXHR) {
+	  model.set({response: data});
+	},
+	error: function(jqXHR, textStatus, errorThrown) {
+	  model.set({response: textStatus});
+	}
+      });
+    }
+
+  });
+
+  var HurlView = Backbone.View.extend({
+
+    tagName: "div",
+    template: Handlebars.compile($("#hurl-template").html()),
+
+    initialize: function() {
+      _.bindAll(this, 'render');
+      this.model.bind('change', this.render);
+      this.model.view = this;
+    },
+
+    render: function() {
+      $(this.el).html(this.template(this.model.toJSON()));
+      return this;
+    }
+
+  });
+
   // The Application
   // ---------------
 
@@ -15,7 +52,7 @@ $(function(){
     // Delegated events for creating new items, and clearing completed ones.
     events: {
       "change #select-method":  "changeMethod",
-      "submit form": "makeRequest"
+      "submit form": "hurl"
     },
 
     // At initialization we bind to the relevant events on the `Todos`
@@ -29,23 +66,19 @@ $(function(){
       e.preventDefault();
     },
 
-    makeRequest: function(e) {
+    hurl: function(e) {
       e.preventDefault();
 
-      var url = $("input[name='url']").val();
-      var type = $("#select-method").val();
-
-      $.ajax({
-	url: url,
-	type: type,
-	success: function(data, textStatus, jqXHR) {
-	  console.log(data);
-	},
-	error: function(jqXHR, textStatus, errorThrown) {
-	  console.log(textStatus);
-	}
+      var hurl = new Hurl({
+	url: $("input[name='url']").val(),
+	type: $("#select-method").val()
       });
 
+      var view = new HurlView({model: hurl});
+      $("#current-hurl").html(view.render().el);
+
+      // Send the request
+      hurl.send();
     },
 
     // Re-rendering the App just means refreshing the statistics -- the rest
