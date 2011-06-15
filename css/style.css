@@ -1,0 +1,60 @@
+/* general */
+body {
+  font: 1em "lucida Grande",arial,sans-serif;
+  background: #fff url(../images/rainbow.png) repeat;
+  color: #333;
+}
+
+p {
+  margin: 6px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #26B3CF;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+#churlapp {
+  min-width: 100px;
+  max-width: 860px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+header {
+  padding: 20px 50px 5px 50px;
+  border-bottom: 5px solid #26B3CF;
+}
+
+header h1 {
+  text-indent: -9999px;
+  width: 118px;
+  height: 53px;
+  background: url(../images/logo.png) top left no-repeat;
+}
+
+header nav {
+  padding-top: 10px;
+}
+
+header nav ul li {
+  display: inline-block;
+}
+
+form {
+  padding: 30px;
+}
+
+input[name='url'] {
+  width: 100%;
+  font-size: 18px;
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Churl: Hurl for Chrome",
+  "version": "0.1",
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "icons": {
+    "16": "images/logo.png"
+  },
+  "permissions": [
+    "http://*/*"
+  ]
+}
