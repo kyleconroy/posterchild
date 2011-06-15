@@ -5,6 +5,9 @@
     <title>Churl: Hurl for Chrome</title>
     <link href="css/reset.css" media="all" rel="stylesheet" type="text/css"/>
     <link href="css/style.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="css/prettify.css" media="all" type="text/css" rel="stylesheet" />
+    <link href="css/sunburst.css" media="all" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="js/prettify.js"></script>
     <script src="js/jquery-1.6.1.min.js"></script>
     <script src="js/handlebars.1.0.0.beta.3.js"></script>
     <script src="js/underscore-min.js"></script>
@@ -13,7 +16,7 @@
     <script src="js/churl.js"></script>
   </head>
 
-  <body>
+  <body onload="prettyPrint()">
 
     <!-- Todo App Interface -->
 
@@ -125,13 +128,15 @@
       </nav>
       <section id="hurl-request">
 	<pre>
-	  {{request}}
+	  {{#request}}
+	  {{/request}}
 	</pre>
       </section>
       <section id="hurl-response">
-	<pre>
-	  {{response}}
-	</pre>
+	  {{#response}}
+	  <pre class="prettyprint">{{headers}}</pre>
+	  <pre class="prettyprint">{{content}}</pre>
+	  {{/response}}
       </section>
     </script>
 

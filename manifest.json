@@ -10,6 +10,7 @@
     "16": "images/logo.png"
   },
   "permissions": [
-    "http://*/*"
+    "http://*/*",
+    "https://*/*"
   ]
 }

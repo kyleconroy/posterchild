@@ -11,7 +11,14 @@ $(function(){
 	url: model.get("url"),
 	type: model.get("type"),
 	success: function(data, textStatus, jqXHR) {
-	  model.set({response: data});
+	  model.set({
+	    response: {
+	      content: data,
+	      headers: jqXHR.getAllResponseHeaders()
+	    },
+	    request: {
+	    }
+	  });
 	},
 	error: function(jqXHR, textStatus, errorThrown) {
 	  model.set({response: textStatus});
@@ -34,6 +41,10 @@ $(function(){
 
     render: function() {
       $(this.el).html(this.template(this.model.toJSON()));
+
+      // Highlight the code
+      prettyPrint();
+
       return this;
     }
 
